@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mystery Word Game</title>
+    <link rel="stylesheet" href="../public/styles.css">
+  </head>
+  <body>
+    <div id="heading">
+      <h1>Mystery Word Game</h1>
+    </div>
+    <div id="guessCheckerWrapper">
+      <div id="guessChecker">
+        {{#correctGuessesArray}}
+          <p>{{guess}}</p>
+        {{/correctGuessesArray}}
+      </div>
+    </div>
+    <div id="winnerCelebration">
+      <h3>Conratulations, you win!</h3>
+    </div>
+    <div id="doYouWantToPlayAgainWrapper">
+      <div id="doYouWantToPlayAgain">
+        <h2>Do you want to play again?</h2>
+        <div id="playAgainAnswers">
+          <form action="/playAgain/" method="post">
+            <input type="submit" id="yesPlayAgain" value="yes">
+          </form>
+          <form action="/soreLoser/" method="post">
+            <input type="submit" id="noDontPlayAgain" value="no">
+          </form>
+        </div>
+      </div>
+    </div>
+    <div id="allGuessesContainer">
+      <h3>You have guessed the following letters:</h3>
+      <div id="allGuesses">
+        {{#guessesArray}}
+          <p>{{.}},</p>
+        {{/guessesArray}}
+      </div>
+    </div>
+    <div id="guessCounter">
+      <p>Guesses left: <u><span>{{#guessesLeft}}{{numberOfGuessesLeft}}{{/guessesLeft}}</span></u></p>
+    </div>
+  </body>
+</html>

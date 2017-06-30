@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mystery Word Game</title>
+    <link rel="stylesheet" href="../public/styles.css">
+  </head>
+  <body>
+    <div id="heading">
+      <h1>Mystery Word Game</h1>
+    </div>
+    <div id="guessCheckerWrapper">
+      <div id="guessChecker">
+        {{#correctGuessesArray}}
+          <p>{{guess}}</p>
+        {{/correctGuessesArray}}
+      </div>
+    </div>
+    <div id="userEntry">
+      <form action="/theGame/" method="post">
+        <label for="userInput">Please guess a letter</label>
+        <input type="text" id="userInput" name="userGuess">
+        <input type="submit" id="entryButton" value="guess">
+      </form>
+    </div>
+    <div id="allGuessesContainer">
+      <h3>You have guessed the following letters:</h3>
+      <div id="allGuesses">
+        {{#guessesArray}}
+          <p>{{.}},</p>
+        {{/guessesArray}}
+      </div>
+    </div>
+    <div id="guessCounter">
+      <p>Guesses left: <u><span>{{#guessesLeft}}{{numberOfGuessesLeft}}{{/guessesLeft}}</span></u></p>
+    </div>
+  </body>
+</html>
+
+<!-- This code below works and the code above is a test................... -->
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mystery Word Game</title>
+    <link rel="stylesheet" href="../public/styles.css">
+  </head>
+  <body>
+    <div id="heading">
+      <h1>Mystery Word Game</h1>
+    </div>
+    <div id="guessCheckerWrapper">
+      <div id="guessChecker">
+        {{#correctGuessesArray}}
+          <p>{{guess}}</p>
+        {{/correctGuessesArray}}
+      </div>
+    </div>
+    <div id="userEntry">
+      <form action="/theGame/" method="post">
+        <label for="userInput">Please guess a letter</label>
+        <input type="text" id="userInput" name="userGuess">
+        <input type="submit" id="entryButton" value="guess">
+      </form>
+    </div>
+    <div id="allGuessesContainer">
+      <h3>You have guessed the following letters:</h3>
+      <div id="allGuesses">
+        {{#guessesArray}}
+          <p>{{.}},</p>
+        {{/guessesArray}}
+      </div>
+    </div>
+    <div id="guessCounter">
+      <p>Guesses left: <u><span>{{#bullshitArray}}{{.}}{{/bullshitArray}}</span></u></p>
+    </div>
+  </body>
+</html> -->
