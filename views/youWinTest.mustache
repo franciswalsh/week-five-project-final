@@ -43,5 +43,10 @@
     <div id="guessCounter">
       <p>Guesses left: <u><span>{{#guessesLeft}}{{numberOfGuessesLeft}}{{/guessesLeft}}</span></u></p>
     </div>
+    <div>
+      {{#guessesLeft}}
+      <a href="https://www.merriam-webster.com/dictionary/{{correctWord}}">Click to learn the definition</a>
+      {{/guessesLeft}}
+    </div>
   </body>
 </html>

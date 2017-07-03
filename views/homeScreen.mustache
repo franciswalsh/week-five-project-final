@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mystery Word Game</title>
+    <link rel="stylesheet" href="../public/styles.css">
+  </head>
+  <body>
+    <div id="whichModeWouldYouLikeToPlayWrapper">
+      <div id="whichModeWouldYouLikeToPlay">
+        <h2>Welcome to Frank's mystery word game!</h2>
+        <p>The computer will randomly generate a word, and then you will have up
+          to 8 tries to guess letters in order to complete the word. If you are up
+          for the test, please selct a difficulty level to begin playing. However,
+          if you do not think you can handle it, exit your browser immediately.</p>
+        <ul>
+          <li>Easy Mode: 4-6 letter words</li>
+          <li>Normal Mode: 7-9 letter words</li>
+          <li>Hard Mode: 10+ letter words</li>
+        </ul>
+        <div id="difficultyLevel">
+          <form action="/startGame/easy/" method="post">
+            <input type="submit" class="difficultyButton" value="Easy Mode" name="easy">
+          </form>
+          <form action="/startGame/normal/" method="post">
+            <input type="submit" class="difficultyButton" value="Normal Mode" name="normal">
+          </form>
+          <form action="/startGame/hard/" method="post">
+            <input type="submit" class="difficultyButton" value="Hard Mode" name="hard">
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
+
+<!-- This code below works and the code above is a test................... -->
+
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mystery Word Game</title>
+    <link rel="stylesheet" href="../public/styles.css">
+  </head>
+  <body>
+    <div id="heading">
+      <h1>Mystery Word Game</h1>
+    </div>
+    <div id="guessCheckerWrapper">
+      <div id="guessChecker">
+        {{#correctGuessesArray}}
+          <p>{{guess}}</p>
+        {{/correctGuessesArray}}
+      </div>
+    </div>
+    <div id="userEntry">
+      <form action="/theGame/" method="post">
+        <label for="userInput">Please guess a letter</label>
+        <input type="text" id="userInput" name="userGuess">
+        <input type="submit" id="entryButton" value="guess">
+      </form>
+    </div>
+    <div id="allGuessesContainer">
+      <h3>You have guessed the following letters:</h3>
+      <div id="allGuesses">
+        {{#guessesArray}}
+          <p>{{.}},</p>
+        {{/guessesArray}}
+      </div>
+    </div>
+    <div id="guessCounter">
+      <p>Guesses left: <u><span>{{#bullshitArray}}{{.}}{{/bullshitArray}}</span></u></p>
+    </div>
+  </body>
+</html> -->

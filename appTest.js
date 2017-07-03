@@ -33,7 +33,7 @@ app.get('/', function(req, res) {
   if (req.session) {
     console.log("original", req.session);
     req.session.numberOfGuessesLeft = 8;
-    req.session.correctWord = data.getRandomWord();
+    req.session.correctWord = data.determiningDifficulty(req);
     req.session.correctGuessesArray = data.makeArrayOfEmptyCharactersSameLengthAsWord(req.session.correctWord);
     req.session.correctWordArray = data.convertWordToArrayOfCharacters(req.session.correctWord);
     req.session.guessesArray = [];
@@ -122,7 +122,7 @@ app.post('/playAgain/', function(req, res) {
   console.log("during old game", req.session);
   req.session.destroy();
   console.log("starting new game", req.session);
-  res.redirect('/');
+  res.redirect('/startGame/');
 });
 app.get('/tooManyCharacters/', function(req, res) {
   res.render('moreThanOneCharacter');
@@ -147,6 +147,21 @@ app.get('/blankEntry/', function(req, res) {
 });
 app.post('/blankEntry/', function(req, res) {
   res.redirect('/theGame/');
+});
+app.get('/startGame/', function(req, res) {
+  res.render('homeScreen');
+});
+app.post('/startGame/easy/', function(req, res) {
+  req.session.mode = 'easy';
+  res.redirect('/');
+});
+app.post('/startGame/normal/', function(req, res) {
+  req.session.mode = 'normal';
+  res.redirect('/');
+});
+app.post('/startGame/hard/', function(req, res) {
+  req.session.mode = 'hard';
+  res.redirect('/');
 });
 app.listen(3000, function() {
   console.log('Successfully started express application!');

@@ -117,7 +117,50 @@ function whichLettersAreMissing(req){
   console.log(req.session.correctGuessesArray);
   return;
 }
-
+function getRandomEasyWord(){
+  let tester = true;
+  let randomWord;
+  while(tester){
+    randomWord = getRandomWord();
+    if (randomWord.length >= 4 && randomWord.length <= 6){
+      tester = false;
+    }
+  }
+  return randomWord;
+}
+function getRandomNormalWord(){
+  let tester = true;
+  let randomWord;
+  while(tester){
+    randomWord = getRandomWord();
+    if (randomWord.length >= 7 && randomWord.length <= 9){
+      tester = false;
+    }
+  }
+  return randomWord;
+}
+function getRandomHardWord(){
+  let tester = true;
+  let randomWord;
+  while(tester){
+    randomWord = getRandomWord();
+    if (randomWord.length >= 10){
+      tester = false;
+    }
+  }
+  return randomWord;
+}
+function determiningDifficulty(req){
+  if (req.session.mode === 'easy'){
+    return getRandomEasyWord();
+  } else if (req.session.mode === 'normal'){
+    return getRandomNormalWord();
+  } else if (req.session.mode === 'hard'){
+    return getRandomHardWord();
+  } else {
+    return getRandomWord();
+  }
+}
 // correctWord = getRandomWord();
 // let correctWordWrapper = [correctWord];
 // correctGuessesArray = makeArrayOfEmptyCharactersSameLengthAsWord(correctWord);
@@ -133,15 +176,11 @@ module.exports = {
   convertWordToArrayOfCharacters: convertWordToArrayOfCharacters,
   testingForDuplicateInput: testingForDuplicateInput,
   testingForLetter: testingForLetter,
-  whichLettersAreMissing: whichLettersAreMissing
-  // possibleWordsArray: possibleWordsArray,
-  // guessesArray: guessesArray,
-  // correctWordArray: correctWordArray,
-  // correctWord: correctWord,
-  // correctGuessesArray: correctGuessesArray,
-  // numberOfGuessesLeft: numberOfGuessesLeft,
-  // correctWordWrapper: correctWordWrapper
-  // bullshitArray: bullshitArray
+  whichLettersAreMissing: whichLettersAreMissing,
+  getRandomHardWord: getRandomHardWord,
+  getRandomNormalWord: getRandomNormalWord,
+  getRandomEasyWord: getRandomEasyWord,
+  determiningDifficulty: determiningDifficulty
 }
 
 

@@ -1,5 +1,7 @@
 body {
-  background-color: white;
+  background-color: lightblue;
+  /*background-image: url('./Cool-Backgrounds-For-Websites11.jpg');*/
+  /*background-size: cover;*/
   font-family: sans-serif;
 }
 #heading h1 {
@@ -31,6 +33,7 @@ body {
   border-right-style: solid;
   border-right-width: thin;
   font-size: 2em;
+  background-color: white;
 }
 #userEntry {
   display: flex;
@@ -63,7 +66,7 @@ body {
 #entryButton {
   height: 100px;
   font-size: 1.5em;
-  background-color: red;
+  background-color: yellow;
   margin-left: 1%;
   margin-right: 1%;
 }
