@@ -31,19 +31,7 @@ app.get('/', function(req, res) {
   console.log(data.correctWord);
 
   if (req.session) {
-    console.log("original", req.session);
-    req.session.numberOfGuessesLeft = 8;
-    req.session.correctWord = data.determiningDifficulty(req);
-    req.session.correctGuessesArray = data.makeArrayOfEmptyCharactersSameLengthAsWord(req.session.correctWord);
-    req.session.correctWordArray = data.convertWordToArrayOfCharacters(req.session.correctWord);
-    req.session.guessesArray = [];
-    // req.session.correctWord = data.correctWord;
-    // req.session.correctGuessesArray = data.correctGuessesArray;
-    // req.session.guessesArray = data.guessesArray;
-    // req.session.correctWordArray = data.correctWordArray;
-    console.log(data.correctWord);
-    console.log("modified req.session: ", req.session);
-    res.redirect('/theGame/');
+    res.redirect('/startGame/');
   } else {
     res.send("we are communicating");
   }
@@ -119,10 +107,8 @@ app.get('/playAgain/', function(req, res) {
   res.send('something went wrong');
 });
 app.post('/playAgain/', function(req, res) {
-  console.log("during old game", req.session);
   req.session.destroy();
-  console.log("starting new game", req.session);
-  res.redirect('/startGame/');
+  res.redirect('/');
 });
 app.get('/tooManyCharacters/', function(req, res) {
   res.render('moreThanOneCharacter');
@@ -153,15 +139,30 @@ app.get('/startGame/', function(req, res) {
 });
 app.post('/startGame/easy/', function(req, res) {
   req.session.mode = 'easy';
-  res.redirect('/');
+  req.session.numberOfGuessesLeft = 8;
+  req.session.correctWord = data.determiningDifficulty(req);
+  req.session.correctGuessesArray = data.makeArrayOfEmptyCharactersSameLengthAsWord(req.session.correctWord);
+  req.session.correctWordArray = data.convertWordToArrayOfCharacters(req.session.correctWord);
+  req.session.guessesArray = [];
+  res.redirect('/theGame/');
 });
 app.post('/startGame/normal/', function(req, res) {
   req.session.mode = 'normal';
-  res.redirect('/');
+  req.session.numberOfGuessesLeft = 8;
+  req.session.correctWord = data.determiningDifficulty(req);
+  req.session.correctGuessesArray = data.makeArrayOfEmptyCharactersSameLengthAsWord(req.session.correctWord);
+  req.session.correctWordArray = data.convertWordToArrayOfCharacters(req.session.correctWord);
+  req.session.guessesArray = [];
+  res.redirect('/theGame/');
 });
 app.post('/startGame/hard/', function(req, res) {
   req.session.mode = 'hard';
-  res.redirect('/');
+  req.session.numberOfGuessesLeft = 8;
+  req.session.correctWord = data.determiningDifficulty(req);
+  req.session.correctGuessesArray = data.makeArrayOfEmptyCharactersSameLengthAsWord(req.session.correctWord);
+  req.session.correctWordArray = data.convertWordToArrayOfCharacters(req.session.correctWord);
+  req.session.guessesArray = [];
+  res.redirect('/theGame/');
 });
 app.listen(3000, function() {
   console.log('Successfully started express application!');
